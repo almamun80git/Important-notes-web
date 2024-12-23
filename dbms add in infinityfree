@@ -1,0 +1,46 @@
+To add a database to your website on the hosting platform InfinityFree, follow these steps:
+
+1. **Sign in to Your InfinityFree Account:**
+   - Go to [InfinityFree](https://www.infinityfree.net) and log in with your credentials.
+
+2. **Create a New Database:**
+   - Once logged in, navigate to the Control Panel (cPanel).
+   - In the cPanel, look for the **"MySQL Databases"** section and click on it.
+   - Here, you can create a new database by providing a name. Note down the database name, username, and password as you'll need them for your website's configuration.
+
+3. **Configure Database Connection in Your Website:**
+   - Open your website's configuration file where you need to set the database connection details. This file is typically named `config.php`, `db.php`, or similar.
+   - Update the configuration file with the database details you noted earlier. For example, if you are using PHP, your configuration might look like this:
+
+     ```php
+     <?php
+     $servername = "sqlxxxx.infinityfree.net"; // replace with your server name
+     $username = "your_db_username"; // replace with your database username
+     $password = "your_db_password"; // replace with your database password
+     $dbname = "your_db_name"; // replace with your database name
+
+     // Create connection
+     $conn = new mysqli($servername, $username, $password, $dbname);
+
+     // Check connection
+     if ($conn->connect_error) {
+         die("Connection failed: " . $conn->connect_error);
+     }
+     echo "Connected successfully";
+     ?>
+     ```
+
+4. **Upload Your Website Files:**
+   - Use an FTP client like FileZilla to upload your website files to the InfinityFree server.
+   - Connect to your hosting account using the FTP details provided by InfinityFree.
+   - Upload your website files to the `htdocs` directory.
+
+5. **Test the Database Connection:**
+   - Open your website in a web browser and navigate to the page where the database connection is required.
+   - If everything is set up correctly, you should see a success message indicating that the connection to the database has been established.
+
+6. **Import Database Schema (if needed):**
+   - If you have a database schema or data to import, you can use phpMyAdmin in the InfinityFree cPanel.
+   - Go to the **"phpMyAdmin"** section, select your database, and use the **"Import"** feature to upload your `.sql` file.
+
+By following these steps, you should be able to successfully add and connect a database to your website on InfinityFree. If you encounter any issues, refer to the InfinityFree knowledge base or support forums for additional help.
